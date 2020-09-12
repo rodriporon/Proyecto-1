@@ -9,6 +9,18 @@ public class Usuario {
     private String nombre;
     private String user;
     private String pass;
+    
+    public Usuario(){
+        nombre = "";
+        user = "";
+        pass = "";
+    }
+
+    public Usuario(String nombre, String user, String pass) {
+        this.nombre = nombre;
+        this.user = user;
+        this.pass = pass;
+    }
 
     /**
      * @return the nombre
