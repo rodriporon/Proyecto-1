@@ -20,8 +20,11 @@ public class MenuPrincipal extends JFrame implements ActionListener{
     public Usuario[] usuarios;
     public int contadorUsuarios;
     
+    public Clientes[] clientes;
+    public int contadorclientes;
     
-    public MenuPrincipal(Usuario[] users, int contadorusuarios){
+    
+    public MenuPrincipal(Usuario[] users, int contadorusuarios, Clientes[] clientes, int contadorclientes){
         
         this.setSize(700,500);
         this.setLocationRelativeTo(null);
@@ -33,6 +36,9 @@ public class MenuPrincipal extends JFrame implements ActionListener{
         
         usuarios = users;
         contadorUsuarios = contadorusuarios;
+        
+        this.clientes = clientes;
+        this.contadorclientes = contadorclientes;
         Botones();
 
         
@@ -75,11 +81,11 @@ public class MenuPrincipal extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == Regresar) {
-            ventana = new VentanaPrincipal(usuarios, contadorUsuarios);
+            ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == AdminCli) {
-            AdministracionClientes ventana = new AdministracionClientes();
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorUsuarios, clientes, contadorclientes);
             ventana.setVisible(true);
             this.dispose();
         }

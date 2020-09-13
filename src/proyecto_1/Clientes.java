@@ -1,25 +1,28 @@
 package proyecto_1;
 
-/**
- *
- * @author Rodrigo Porón
- */
+import java.io.File;
+
+
 public class Clientes {
     
     private String nombre;
-    private int telefono;
-    private int NIT;
-    
-    public Clientes() {
-    
-}
+    private int edad;
+    private String sexo;
+    private String NIT;
+    private File avatar;
 
-    public Clientes(String nombre, int telefono, int NIT) {
+    public Clientes(String nombre, int edad, String sexo, String NIT, File avatar) {
         this.nombre = nombre;
-        this.telefono = telefono;
+        this.edad = edad;
+        this.sexo = sexo;
         this.NIT = NIT;
+        this.avatar = avatar;
     }
-    
+
+    Clientes() {
+        
+    }
+
     
     
 
@@ -38,31 +41,58 @@ public class Clientes {
     }
 
     /**
-     * @return the telefono
+     * @return the edad
      */
-    public int getTelefono() {
-        return telefono;
+    public int getEdad() {
+        return edad;
     }
 
     /**
-     * @param telefono the telefono to set
+     * @param edad the edad to set
      */
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    /**
+     * @return the sexo
+     */
+    public String getSexo() {
+        return sexo;
+    }
+
+    /**
+     * @param sexo the sexo to set
+     */
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     /**
      * @return the NIT
      */
-    public int getNIT() {
+    public String getNIT() {
         return NIT;
     }
 
     /**
      * @param NIT the NIT to set
      */
-    public void setNIT(int NIT) {
+    public void setNIT(String NIT) {
         this.NIT = NIT;
     }
-    
+
+    /**
+     * @return the avatar
+     */
+    public File getAvatar() {
+        return avatar;
+    }
+
+    /**
+     * @param avatar the avatar to set
+     */
+    public void setAvatar(File avatar) {
+        this.avatar = avatar;
+    }
 }

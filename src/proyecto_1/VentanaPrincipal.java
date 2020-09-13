@@ -21,8 +21,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     public String[] arreglo;
     public int contadorUsuarios;
     public Usuario[] usuarios;
+    public Clientes[] clientes;
+    public int contadorclientes;
 
-    public VentanaPrincipal(Usuario[] users, int contadorusuarios){
+    public VentanaPrincipal(Usuario[] users, int contadorusuarios, Clientes[] clientes, int contadorclientes){
         
         
         this.setSize(600,400);
@@ -35,6 +37,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
        
         usuarios = users;
         contadorUsuarios = contadorusuarios;
+        
+        this.clientes = clientes;
+        this.contadorclientes = contadorclientes;
         RecorrerUsuarios();
         EntradaDatos();
 
@@ -154,18 +159,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             }
             if (validacion) {
                 JOptionPane.showMessageDialog(this, "Bienvenido " + usuarios[posicion].getNombre());
-                menu = new MenuPrincipal(usuarios, contadorUsuarios);
+                menu = new MenuPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
-                VentanaPrincipal ventana = new VentanaPrincipal(usuarios, contadorUsuarios);
+                VentanaPrincipal ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes);
                 ventana.setVisible(true);
                 this.dispose();
             }
-
-                
-            
-            
         } else if (ae.getSource() == registrar) {
             nombre2 = nombre_R.getText();
             username2 = user_R.getText();
@@ -187,7 +188,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
                 usuarios[contadorUsuarios] = new Usuario(nombre2, username2, passwordR);
                 contadorUsuarios++;
                 JOptionPane.showMessageDialog(this, "Usuario registrado");
-                VentanaPrincipal ventana = new VentanaPrincipal(usuarios, contadorUsuarios);
+                VentanaPrincipal ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes);
                 ventana.setVisible(true);
                 this.dispose();
             }
