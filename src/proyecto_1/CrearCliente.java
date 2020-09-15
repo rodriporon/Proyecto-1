@@ -12,16 +12,21 @@ public class CrearCliente extends JFrame implements ActionListener{
     
     public JComboBox<String> box1;
     public JTextField text1, text2, text3, text4;
-    public JButton avatar, guardar;
+    public JButton avatar, guardar, regresar;
     public File rutaavatar;
-    public String nombre, sexo, nit;
+    public String nombre, sexo, nit, verificarnit, avatarruta;
     public int edad;
     
     public Clientes[] clientes;
     public int contadorclientes;
     
-    public CrearCliente(Clientes[] clientes, int contadorclientes){
+    public Usuario[] usuarios;
+    public int contadorusuarios;
+    
+    public CrearCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes){
         
+        this.usuarios = usuarios;
+        this.contadorusuarios = contadorusuarios;
         this.clientes = clientes;
         this.contadorclientes = contadorclientes;
         
@@ -89,6 +94,13 @@ public class CrearCliente extends JFrame implements ActionListener{
         guardar.addActionListener(this);
         this.add(guardar);
         
+        regresar = new JButton("Regresar");
+        regresar.setBounds(350,10,110,20);
+        regresar.addActionListener(this);
+        this.add(regresar);
+        
+        
+        
         RecorrerClientes();
         
     }
@@ -110,17 +122,34 @@ public class CrearCliente extends JFrame implements ActionListener{
             JFileChooser fc = new JFileChooser();
             int op = fc.showOpenDialog(this);
             if (op == JFileChooser.APPROVE_OPTION) {
-                rutaavatar = fc.getSelectedFile();
-                System.out.println(rutaavatar);
+                avatarruta = fc.getSelectedFile().toString();
+                System.out.println(avatarruta);
             }
         } else if (ae.getSource() == guardar) {
             nombre = text1.getText();
             edad = Integer.parseInt(text2.getText());
             nit = text4.getText();
-            clientes[contadorclientes] = new Clientes(nombre, edad, sexo, nit, rutaavatar);
+            for (int i = 0; i < 100; i++) {
+                if (clientes[i].getNIT().equals(nit)) {
+                    verificarnit = clientes[i].getNIT();
+                }
+            }
+            if (contadorclientes == 100) {
+                JOptionPane.showMessageDialog(this, "Se ha llegado al límite de 100 clientes", "Límite alcanzado", JOptionPane.WARNING_MESSAGE);
+            } else if (nit.equals(verificarnit)) {
+                JOptionPane.showMessageDialog(this, "Ya existe este NIT", "NIT ya existente", JOptionPane.WARNING_MESSAGE);
+            } else {
+            clientes[contadorclientes] = new Clientes(nombre, edad, sexo, nit, avatarruta);
             contadorclientes++;
             JOptionPane.showMessageDialog(this, "Cliente Registrado");
-            CrearCliente ventana = new CrearCliente(clientes, contadorclientes);
+            CrearCliente ventana = new CrearCliente(usuarios, contadorusuarios, clientes, contadorclientes);
+            ventana.setVisible(true);
+            this.dispose();
+                
+            }
+
+        } else if (ae.getSource() == regresar) {
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes);
             ventana.setVisible(true);
             this.dispose();
         }

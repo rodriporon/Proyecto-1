@@ -9,9 +9,9 @@ public class Clientes {
     private int edad;
     private String sexo;
     private String NIT;
-    private File avatar;
+    private String avatar;
 
-    public Clientes(String nombre, int edad, String sexo, String NIT, File avatar) {
+    public Clientes(String nombre, int edad, String sexo, String NIT, String avatar) {
         this.nombre = nombre;
         this.edad = edad;
         this.sexo = sexo;
@@ -20,6 +20,11 @@ public class Clientes {
     }
 
     Clientes() {
+        this.nombre = "";
+        this.edad = 0;
+        this.sexo = "";
+        this.NIT = "";
+        this.avatar = null;
         
     }
 
@@ -85,14 +90,14 @@ public class Clientes {
     /**
      * @return the avatar
      */
-    public File getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
     /**
      * @param avatar the avatar to set
      */
-    public void setAvatar(File avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 }
