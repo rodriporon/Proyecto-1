@@ -29,9 +29,13 @@ public class DashboardClientes extends JFrame implements ActionListener{
     public int contadorusuarios;
     
     public Clientes[] clientes;
-    public int contadorclientes;
+    public int contadorclientes, contadorproductos;
 
-    public DashboardClientes(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes) {
+    public Productos[] productos;
+    public DashboardClientes(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos) {
+        
+        this.productos = productos;
+        this.contadorproductos = contadorproductos;
         
         this.usuarios = usuarios;
         this.contadorusuarios = contadorusuarios;
@@ -158,7 +162,7 @@ public class DashboardClientes extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == regresar) {
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         }

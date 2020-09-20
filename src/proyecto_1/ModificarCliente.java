@@ -28,11 +28,16 @@ public class ModificarCliente extends JFrame implements ActionListener {
     public Usuario[] usuarios;
     public int contadorusuarios;
     
-    public ModificarCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes){
+    public Productos[] productos;
+    public int contadorproductos;
+    
+    public ModificarCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
         this.usuarios = usuarios;
         this.contadorusuarios = contadorusuarios;
         this.clientes = clientes;
         this.contadorclientes = contadorclientes;
+        this.productos = productos;
+        this.contadorproductos = contadorproductos;
         
         this.setSize(500,500);
         this.setLocationRelativeTo(null);
@@ -137,7 +142,7 @@ public class ModificarCliente extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == regresar) {
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == buscar) {

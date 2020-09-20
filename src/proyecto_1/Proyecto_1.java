@@ -11,6 +11,9 @@ public class Proyecto_1 {
     public static int contadorusuarios = 1;
     public static Clientes[] clientes = new Clientes[100];
     public static int contadorclientes = 0;
+    public static Productos[] productos = new Productos[100];
+    public static int contadorproductos = 0;
+    
     public static void main(String[] args) {
         
         
@@ -22,7 +25,11 @@ public class Proyecto_1 {
         for (int i = 0; i < 100; i++) {
             clientes[i] = new Clientes();
         }
-        VentanaPrincipal ventanaprincipal = new VentanaPrincipal(usuarios, contadorusuarios, clientes, contadorclientes);
+        
+        for (int i = 0; i < 100; i++) {
+            productos[i] = new Productos();
+        }
+        VentanaPrincipal ventanaprincipal = new VentanaPrincipal(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
         ventanaprincipal.setVisible(true);
         
     }

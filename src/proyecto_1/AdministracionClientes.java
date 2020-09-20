@@ -9,13 +9,16 @@ public class AdministracionClientes extends JFrame implements ActionListener {
 
     public JButton regresar, dashboard, carga, crear, info, modificar, eliminar;
 
+    public Productos[] productos;
+    public int contadorproductos;
+    
     public Usuario[] usuarios;
     public int contadorUsuarios;
 
     public Clientes[] clientes;
     public int contadorclientes;
 
-    public AdministracionClientes(Usuario[] usuarios, int contadorUsuarios, Clientes[] clientes, int contadorclientes) {
+    public AdministracionClientes(Usuario[] usuarios, int contadorUsuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos) {
 
         this.setSize(600, 600);
         this.setLocationRelativeTo(null);
@@ -24,6 +27,8 @@ public class AdministracionClientes extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
+        this.productos = productos;
+        this.contadorproductos = contadorproductos;
         this.usuarios = usuarios;
         this.contadorUsuarios = contadorUsuarios;
         this.clientes = clientes;
@@ -69,15 +74,15 @@ public class AdministracionClientes extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == regresar) {
-            MenuPrincipal ventana = new MenuPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes);
+            MenuPrincipal ventana = new MenuPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == crear) {
-            CrearCliente ventana = new CrearCliente(usuarios, contadorUsuarios, clientes, contadorclientes);
+            CrearCliente ventana = new CrearCliente(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == dashboard) {
-            DashboardClientes ventana = new DashboardClientes(usuarios, contadorUsuarios, clientes, contadorclientes);
+            DashboardClientes ventana = new DashboardClientes(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == carga) {
@@ -122,15 +127,15 @@ public class AdministracionClientes extends JFrame implements ActionListener {
             }
 
         } else if (ae.getSource() == info) {
-            InformacionCliente ventana = new InformacionCliente(usuarios, contadorUsuarios, clientes, contadorclientes);
+            InformacionCliente ventana = new InformacionCliente(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == modificar) {
-            ModificarCliente ventana = new ModificarCliente(usuarios, contadorUsuarios, clientes, contadorclientes);
+            ModificarCliente ventana = new ModificarCliente(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == eliminar) {
-            EliminarCliente ventana = new EliminarCliente(usuarios, contadorUsuarios, clientes, contadorclientes);
+            EliminarCliente ventana = new EliminarCliente(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         }

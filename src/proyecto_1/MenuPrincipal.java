@@ -23,8 +23,11 @@ public class MenuPrincipal extends JFrame implements ActionListener{
     public Clientes[] clientes;
     public int contadorclientes;
     
+    public Productos[] productos;
+    public int contadorproductos;
     
-    public MenuPrincipal(Usuario[] users, int contadorusuarios, Clientes[] clientes, int contadorclientes){
+    
+    public MenuPrincipal(Usuario[] users, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
         
         this.setSize(700,500);
         this.setLocationRelativeTo(null);
@@ -34,6 +37,8 @@ public class MenuPrincipal extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         
+        this.productos = productos;
+        this.contadorproductos = contadorproductos;
         usuarios = users;
         contadorUsuarios = contadorusuarios;
         
@@ -73,23 +78,23 @@ public class MenuPrincipal extends JFrame implements ActionListener{
             
         
         }
-        
-        
-    
-    
+
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == Regresar) {
-            ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes);
+            ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == AdminCli) {
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorUsuarios, clientes, contadorclientes);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
-        }
-        
+        } else if (ae.getSource() == AdminPro) {
+            AdministracionProductos ventana = new AdministracionProductos(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
+            ventana.setVisible(true);
+            this.dispose();
+        }        
         
     }
     

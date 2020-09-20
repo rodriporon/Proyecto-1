@@ -9,17 +9,19 @@ public class InformacionCliente extends JFrame implements ActionListener {
     
     public Usuario[] usuarios;
     public int contadorusuarios;
-    
+    public Productos[] productos;
+    public int contadorproductos;
+           
     public ImageIcon imagen;
     public Clientes[] clientes;
-    public int contadorclientes, findnit;
+    public int contadorclientes, findnit = -1;
     
     public String nombre,sexo = null ,nit,avatar, buscarnit;
     public int edad;
     public JButton regresar, buscar;
     public JTextField tnit;
     public JLabel nombre1,nombre2,edad1,edad2,sexo1,sexo2,nit1,nit2,avatar1,avatar2,titulo;
-    public InformacionCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes){
+    public InformacionCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
         
         this.setSize(800,600);
         this.setLocationRelativeTo(null);
@@ -29,6 +31,8 @@ public class InformacionCliente extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         
+        this.productos = productos;
+        this.contadorproductos = contadorproductos;
         this.usuarios = usuarios;
         this.contadorusuarios = contadorusuarios;
         
@@ -106,7 +110,7 @@ public class InformacionCliente extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == regresar) {
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == buscar) {
@@ -116,6 +120,7 @@ public class InformacionCliente extends JFrame implements ActionListener {
                     findnit = i;
                 }
             }
+            if (findnit != -1) {
                 nombre = clientes[findnit].getNombre();
                 edad = clientes[findnit].getEdad();
                 sexo = clientes[findnit].getSexo();
@@ -130,6 +135,11 @@ public class InformacionCliente extends JFrame implements ActionListener {
                 
                 imagen = new ImageIcon(avatar);
                 avatar2.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(350,250, Image.SCALE_SMOOTH)));
+                findnit = -1;
+            } else if (findnit == -1) {
+                JOptionPane.showMessageDialog(this, "No se encontró al cliente");
+            }
+                
         }
     }
     

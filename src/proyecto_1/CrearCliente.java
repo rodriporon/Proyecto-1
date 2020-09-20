@@ -23,12 +23,17 @@ public class CrearCliente extends JFrame implements ActionListener{
     public Usuario[] usuarios;
     public int contadorusuarios;
     
-    public CrearCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes){
+    public Productos[] productos;
+    public int contadorproductos;
+    
+    public CrearCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
         
         this.usuarios = usuarios;
         this.contadorusuarios = contadorusuarios;
         this.clientes = clientes;
         this.contadorclientes = contadorclientes;
+        this.productos = productos;
+        this.contadorproductos = contadorproductos;
         
         this.setSize(500,300);
         this.setLocationRelativeTo(null);
@@ -142,14 +147,14 @@ public class CrearCliente extends JFrame implements ActionListener{
             clientes[contadorclientes] = new Clientes(nombre, edad, sexo, nit, avatarruta);
             contadorclientes++;
             JOptionPane.showMessageDialog(this, "Cliente Registrado");
-            CrearCliente ventana = new CrearCliente(usuarios, contadorusuarios, clientes, contadorclientes);
+            CrearCliente ventana = new CrearCliente(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
                 
             }
 
         } else if (ae.getSource() == regresar) {
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
             ventana.setVisible(true);
             this.dispose();
         }
