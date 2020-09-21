@@ -17,6 +17,8 @@ public class MenuPrincipal extends JFrame implements ActionListener{
     public JButton Reportes;
     public JButton Regresar;
     
+    public Ventas[] ventas;
+    public int contadorventas;
     public Usuario[] usuarios;
     public int contadorUsuarios;
     
@@ -27,7 +29,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
     public int contadorproductos;
     
     
-    public MenuPrincipal(Usuario[] users, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
+    public MenuPrincipal(Usuario[] users, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos, Ventas[] ventas, int contadorventas){
         
         this.setSize(700,500);
         this.setLocationRelativeTo(null);
@@ -37,6 +39,8 @@ public class MenuPrincipal extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         
+        this.ventas = ventas;
+        this.contadorventas = contadorventas;
         this.productos = productos;
         this.contadorproductos = contadorproductos;
         usuarios = users;
@@ -83,18 +87,21 @@ public class MenuPrincipal extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == Regresar) {
-            ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
+            ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == AdminCli) {
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == AdminPro) {
-            AdministracionProductos ventana = new AdministracionProductos(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
+            AdministracionProductos ventana = new AdministracionProductos(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
-        }        
+        } else if (ae.getSource() == Reportes) {
+            //Reporte1 ventana = new Reporte1(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
+        }
+     
         
     }
     

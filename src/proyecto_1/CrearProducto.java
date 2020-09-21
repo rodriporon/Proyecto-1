@@ -6,17 +6,19 @@ import java.awt.event.ItemEvent;
 import javax.swing.*;
 
 public class CrearProducto extends JFrame implements ActionListener{
+    public Ventas[] ventas;
     public Usuario[] usuarios;
     public Clientes[] clientes;
     public Productos[] productos;
-    public int contadorusuarios, contadorclientes, contadorproductos;
+    public int contadorusuarios, contadorclientes, contadorproductos, contadorventas;
     public String rutaimagen, nombre, verificarnombre;
     public int cantidad;
     public float precio;
     JTextField text1, text2, text3, text4;
     JButton regresar, guardar, imagen;
-    public CrearProducto (Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos) {
-        
+    public CrearProducto (Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos,Ventas[] ventas, int contadorventas) {
+        this.ventas = ventas;
+        this.contadorventas = contadorventas;
         this.usuarios = usuarios;
         this.contadorusuarios = contadorusuarios;
         this.clientes = clientes;
@@ -102,12 +104,12 @@ public class CrearProducto extends JFrame implements ActionListener{
                 productos[contadorproductos] = new Productos(nombre, rutaimagen, precio, cantidad);
                 contadorproductos++;
                 JOptionPane.showMessageDialog(this, "Producto Registrado");
-                CrearProducto ventana = new CrearProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+                CrearProducto ventana = new CrearProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
                 ventana.setVisible(true);
                 this.dispose();
             }
         } else if (ae.getSource() == regresar) {
-            AdministracionProductos ventana = new AdministracionProductos(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            AdministracionProductos ventana = new AdministracionProductos(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         }

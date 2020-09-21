@@ -8,6 +8,8 @@ import javax.swing.*;
 
 public class EliminarCliente extends JFrame implements ActionListener{
     
+    public Ventas[] ventas;
+    public int contadorventas;
     public Clientes[] clientes;
     public int contadorclientes;
     
@@ -23,8 +25,10 @@ public class EliminarCliente extends JFrame implements ActionListener{
     public String nit;
     public int verificarnit;
     
-    public EliminarCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos) {
+    public EliminarCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos, Ventas[] ventas, int contadorventas) {
         
+        this.ventas = ventas;
+        this.contadorventas = contadorventas;
         this.productos = productos;
         this.contadorproductos = contadorproductos;
         this.usuarios = usuarios;
@@ -67,7 +71,7 @@ public class EliminarCliente extends JFrame implements ActionListener{
             }
             contadorclientes--;
             JOptionPane.showMessageDialog(this,"Cliente eliminado");
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         }

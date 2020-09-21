@@ -11,6 +11,9 @@ import java.io.FileReader;
 
 public class AdministracionProductos extends JFrame implements ActionListener{
     
+    public Ventas[] ventas;
+    public int contadorventas;
+    
     public Usuario[] usuarios;
     public int contadorusuarios;
     
@@ -22,7 +25,7 @@ public class AdministracionProductos extends JFrame implements ActionListener{
     
     public JButton regresar, dashboard, carga, crear, info, modificar, eliminar;
     
-    public AdministracionProductos(Usuario[] usuarios, int contadorUsuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
+    public AdministracionProductos(Usuario[] usuarios, int contadorUsuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos, Ventas[] ventas, int contadorventas){
         
         this.setSize(600, 600);
         this.setLocationRelativeTo(null);
@@ -31,6 +34,8 @@ public class AdministracionProductos extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         
+        this.ventas = ventas;
+        this.contadorventas = contadorventas;
         this.productos = productos;
         this.contadorproductos = contadorproductos;
         this.usuarios = usuarios;
@@ -79,7 +84,7 @@ public class AdministracionProductos extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == regresar) {
-            MenuPrincipal ventana = new MenuPrincipal(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            MenuPrincipal ventana = new MenuPrincipal(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == carga) {
@@ -117,23 +122,23 @@ public class AdministracionProductos extends JFrame implements ActionListener{
                 }
             }
         } else if (ae.getSource() == dashboard) {
-            DashboardProductos ventana = new DashboardProductos(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            DashboardProductos ventana = new DashboardProductos(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == crear) {
-            CrearProducto ventana = new CrearProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            CrearProducto ventana = new CrearProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == info) {
-            InformacionProducto ventana = new InformacionProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            InformacionProducto ventana = new InformacionProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == modificar) {
-            ModificarProducto ventana = new ModificarProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            ModificarProducto ventana = new ModificarProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == eliminar) {
-            EliminarProducto ventana = new EliminarProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            EliminarProducto ventana = new EliminarProducto(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         }

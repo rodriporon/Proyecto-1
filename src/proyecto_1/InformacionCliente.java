@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class InformacionCliente extends JFrame implements ActionListener {
     
+    public Ventas[] ventas;
+    public int contadorventas;
     public Usuario[] usuarios;
     public int contadorusuarios;
     public Productos[] productos;
@@ -21,7 +23,7 @@ public class InformacionCliente extends JFrame implements ActionListener {
     public JButton regresar, buscar;
     public JTextField tnit;
     public JLabel nombre1,nombre2,edad1,edad2,sexo1,sexo2,nit1,nit2,avatar1,avatar2,titulo;
-    public InformacionCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
+    public InformacionCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos, Ventas[] ventas, int contadorventas){
         
         this.setSize(800,600);
         this.setLocationRelativeTo(null);
@@ -31,6 +33,8 @@ public class InformacionCliente extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         
+        this.ventas = ventas;
+        this.contadorventas = contadorventas;
         this.productos = productos;
         this.contadorproductos = contadorproductos;
         this.usuarios = usuarios;
@@ -110,7 +114,7 @@ public class InformacionCliente extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == regresar) {
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == buscar) {

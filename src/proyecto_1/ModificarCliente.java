@@ -22,6 +22,9 @@ public class ModificarCliente extends JFrame implements ActionListener {
     public String nombre, sexo, nit, verificarnit, avatarruta;
     public int edad, nitLocat, doblei;
     
+    public Ventas[] ventas;
+    public int contadorventas;
+    
     public Clientes[] clientes;
     public int contadorclientes;
     
@@ -31,7 +34,9 @@ public class ModificarCliente extends JFrame implements ActionListener {
     public Productos[] productos;
     public int contadorproductos;
     
-    public ModificarCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
+    public ModificarCliente(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos, Ventas[] ventas, int contadorventas){
+        this.ventas = ventas;
+        this.contadorventas = contadorventas;
         this.usuarios = usuarios;
         this.contadorusuarios = contadorusuarios;
         this.clientes = clientes;
@@ -142,7 +147,7 @@ public class ModificarCliente extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == regresar) {
-            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            AdministracionClientes ventana = new AdministracionClientes(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == buscar) {

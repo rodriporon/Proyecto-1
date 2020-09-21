@@ -25,7 +25,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     public int contadorclientes;
     public Productos[] productos;
     public int contadorproductos;
-    public VentanaPrincipal(Usuario[] users, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos){
+    public Ventas[] ventas;
+    public int contadorventas;
+    public VentanaPrincipal(Usuario[] users, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos, Ventas[] ventas, int contadorventas){
         
         
         this.setSize(600,400);
@@ -37,6 +39,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
         this.productos = productos;
         this.contadorproductos = contadorproductos;
+        
+        this.ventas = ventas;
+        this.contadorventas = contadorventas;
         
         usuarios = users;
         contadorUsuarios = contadorusuarios;
@@ -162,11 +167,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             }
             if (validacion) {
                 JOptionPane.showMessageDialog(this, "Bienvenido " + usuarios[posicion].getNombre());
-                menu = new MenuPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
+                menu = new MenuPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
-                VentanaPrincipal ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
+                VentanaPrincipal ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
                 ventana.setVisible(true);
                 this.dispose();
             }
@@ -191,7 +196,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
                 usuarios[contadorUsuarios] = new Usuario(nombre2, username2, passwordR);
                 contadorUsuarios++;
                 JOptionPane.showMessageDialog(this, "Usuario registrado");
-                VentanaPrincipal ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos);
+                VentanaPrincipal ventana = new VentanaPrincipal(usuarios, contadorUsuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
                 ventana.setVisible(true);
                 this.dispose();
             }

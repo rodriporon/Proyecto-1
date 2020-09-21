@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class InformacionProducto extends JFrame implements ActionListener{
     
+    public Ventas[] ventas;
+    public int contadorventas;
     public Usuario[] usuarios;
     public Clientes[] clientes;
     public Productos[] productos;
@@ -19,7 +21,7 @@ public class InformacionProducto extends JFrame implements ActionListener{
     JTextField tnombre;
     JLabel nombre1,nombre2,precio1,precio2,cantidad1,cantidad2,imagen1,imagen2,titulo;
     
-    public InformacionProducto(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos) {
+    public InformacionProducto(Usuario[] usuarios, int contadorusuarios, Clientes[] clientes, int contadorclientes, Productos[] productos, int contadorproductos, Ventas[] ventas, int contadorventas) {
         
         this.setSize(800,600);
         this.setLocationRelativeTo(null);
@@ -29,6 +31,8 @@ public class InformacionProducto extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         
+        this.ventas = ventas;
+        this.contadorventas = contadorventas;
         this.usuarios = usuarios;
         this.contadorusuarios = contadorusuarios;
         this.clientes = clientes;
@@ -100,7 +104,7 @@ public class InformacionProducto extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == regresar) {
-            AdministracionProductos ventana = new AdministracionProductos(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos);
+            AdministracionProductos ventana = new AdministracionProductos(usuarios, contadorusuarios, clientes, contadorclientes, productos, contadorproductos, ventas, contadorventas);
             ventana.setVisible(true);
             this.dispose();
         } else if (ae.getSource() == buscar) {
